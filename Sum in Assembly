@@ -1,0 +1,25 @@
+[org 0x0100]
+
+xor ax,ax
+xor bx, bx
+xor cx, cx
+xor dx, dx
+
+
+mov ah, [num1]
+mov ch, 5
+mov bh, num1
+
+outterloop:
+	add ah, [bx]
+	add bh, 2
+	sub ch, 1
+	jnz outterloop
+
+	mov [result], ah
+	mov ax, 0x4c00
+	int 0x21
+
+
+num1: db 1,2,3,1,2
+result: db 0
